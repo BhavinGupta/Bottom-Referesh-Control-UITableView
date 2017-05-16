@@ -11,13 +11,12 @@ Please go through the demo once and let me know if any query regarding this demo
 
 These were the methods to focus on while loading more data into cell with load more custom cell in table view as below:
 
-#pragma mark - UITableView Delegate and Data Source Methods
-// add one for the "loading" cell
+//1
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.objects.count + 1;
 }
 
-// if within the range of model, return cell with model object in it, otherwise show "loading" cell.
+//2
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellStandardIdentifier = @"Cell";
     static NSString *cellLoadingIdentifier = @"Loading";
@@ -34,8 +33,7 @@ These were the methods to focus on while loading more data into cell with load m
     }
 }
 
-#pragma mark - Data Fetching
-/** Fetch more data. Simulate network request fetching more data. When done, it will reload the tableview.**/
+//3
 - (void)fetchMoreData {
     static BOOL fetchInProgress = FALSE;
     
@@ -59,8 +57,7 @@ These were the methods to focus on while loading more data into cell with load m
     });
 }
 
-#pragma mark -  Add Some Dummy Objects To An Array
-/** Add some objects to our model. This simulates the retrieval of 20 more items from our data source. This adds the objects to our model returns an array of `NSIndexPath objects that we can use to refresh our table view. @return An array of `NSIndexPath` objects.**/
+//4
 - (NSArray *)addSomeObjects {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterSpellOutStyle;
